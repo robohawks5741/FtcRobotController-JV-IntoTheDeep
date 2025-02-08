@@ -41,6 +41,9 @@ public class mainOp extends LinearOpMode {
         DcMotor armRaiseMotor = hardwareMap.get(DcMotor.class, "armRaise");
         DcMotor leftHangMotor = hardwareMap.get(DcMotor.class, "leftHang");
         DcMotor rightHangMotor = hardwareMap.get(DcMotor.class, "rightHang");
+        armRaiseMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        leftHangMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        rightHangMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         armRaiseMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         leftHangMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         rightHangMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
