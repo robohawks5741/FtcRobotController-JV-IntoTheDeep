@@ -48,6 +48,7 @@ public class mainOp extends LinearOpMode {
         leftHangMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         rightHangMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         armBaFServo.setPosition(0.85);
+        //TODO: set initialization positions for other servos? If you do this, you need to do it in auto as well
         boolean hanging = false;
         telemetry = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
         waitForStart();
@@ -63,6 +64,7 @@ public class mainOp extends LinearOpMode {
                 drive.updatePoseEstimate();
 
                 if (gamepad1.left_bumper) {
+                    //TODO: tune these positions and powers
                     leftHangMotor.setTargetPosition(10);
                     rightHangMotor.setTargetPosition(-10);
                     leftHangMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -92,6 +94,7 @@ public class mainOp extends LinearOpMode {
                 }
 
                 if (gamepad1.right_stick_y > 0.8) {
+                    //TODO: tune these positions and powers
                     armRaiseMotor.setTargetPosition(-5);
                     armRaiseMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     armRaiseMotor.setPower(0.1);
@@ -109,9 +112,11 @@ public class mainOp extends LinearOpMode {
                 if (gamepad1.dpad_down) bucketServo.setPosition(bucketServo.getPosition() + 0.01);
                 if (gamepad1.dpad_left) armBaFServo.setPosition(armBaFServo.getPosition() + .01);
                 if (gamepad1.dpad_right) armBaFServo.setPosition(armBaFServo.getPosition() - .01);
+                //TODO: make this servo work
                 if (gamepad1.a) armRotServo.setPosition(0);
                 if (gamepad1.y) armRotServo.setPosition(1);
                 telemetry.addData("Hang Pos", leftHangMotor.getCurrentPosition());
+                telemetry.addData("lift pos", armRaiseMotor.getCurrentPosition());
                 telemetry.addData("servo", armBaFServo.getPosition());
                 telemetry.update();
             }
